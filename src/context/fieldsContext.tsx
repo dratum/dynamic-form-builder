@@ -15,6 +15,7 @@ function FieldsContextProvider({ children }: { children: ReactNode }) {
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
     console.log(fieldData);
+    setFieldData([]);
   };
 
   return (

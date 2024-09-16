@@ -3,15 +3,16 @@ import { FieldsDataContextType } from "../../context/types/types";
 
 interface FormProps {
   fields: JSX.Element[];
+  setFields: (fields: JSX.Element[]) => void;
 }
 
-export const Form = ({ fields }: FormProps) => {
+export const Form = ({ fields, setFields }: FormProps) => {
   const { submitHandler } = useFieldsDataContext() as FieldsDataContextType;
 
   return (
     <form className='form' onSubmit={submitHandler}>
       {fields && fields.map((field: JSX.Element) => field)}
-      <button>Отправить</button>
+      <button onClick={() => setFields([])}>Отправить</button>
     </form>
   );
 };

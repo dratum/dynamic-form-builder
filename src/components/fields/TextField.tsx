@@ -35,6 +35,7 @@ export const TextField = (): JSX.Element => {
         Подвердить отправку поля
       </button>
       <input
+        required
         type='text'
         placeholder='label'
         name='label'

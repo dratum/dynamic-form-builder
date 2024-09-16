@@ -15,7 +15,7 @@ function App() {
     <div className='App'>
       <h1>Dynamic Form Builder</h1>
       <ButtonPanel addField={addField} />
-      <Form fields={fields} />
+      <Form fields={fields} setFields={setFields} />
     </div>
   );
 }

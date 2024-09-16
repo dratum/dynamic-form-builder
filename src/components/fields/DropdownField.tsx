@@ -45,6 +45,7 @@ export const DropdownField = (): JSX.Element => {
         onChange={inputHandler}
       />
       <select name='dropdown' onChange={inputHandler} value={dropdown}>
+        <option selected>выбрать</option>
         <option>option-1</option>
         <option>option-2</option>
       </select>
