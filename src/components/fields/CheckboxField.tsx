@@ -1,45 +1,45 @@
 import { useState } from "react";
-
-interface fieldDataState {
-  id: number;
-  type: string;
-  label: string;
-  value: boolean;
-}
+import { useFieldsDataContext } from "../../context/fieldsContext";
+import { FieldsDataContextType } from "../../context/types/types";
 
 export const CheckboxField = (): JSX.Element => {
-  const [fieldData, setFieldData] = useState<fieldDataState>({
-    id: 0,
-    type: "",
-    label: "",
-    value: false,
-  });
+  const { addNewDataField } = useFieldsDataContext() as FieldsDataContextType;
+  const [inputText, setInputText] = useState("");
+  const [inputCheckbox, setInputCheckbox] = useState(false);
+  const [inputType, setInputType] = useState("");
 
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, checked } = e.target;
+    const { type, value, checked, name } = e.target;
 
-    setFieldData({
-      ...fieldData,
+    if (type === "text") {
+      setInputText(value);
+      setInputType(name);
+    } else if (type === "checkbox") {
+      setInputCheckbox(checked);
+    }
+
+    addNewDataField({
       id: Date.now(),
-      type: name,
-      label: value,
-      value: checked,
+      label: type === "text" ? value : inputText,
+      type: inputType,
+      value: type === "checkbox" ? checked : inputCheckbox,
     });
   };
 
   return (
     <div className='checkbox-field'>
       <input
+        required
         name='checkbox'
         type='text'
         placeholder='label'
-        value={fieldData.label}
+        value={inputText}
         onChange={inputHandler}
       ></input>
       <input
         type='checkbox'
         name='checkbox'
-        checked={fieldData.value}
+        checked={inputCheckbox}
         onChange={inputHandler}
       />
       <button>Удалить</button>
