@@ -7,6 +7,7 @@ export const DropdownField = (): JSX.Element => {
 
   const [label, setLabel] = useState("");
   const [dropdown, setDropdown] = useState("");
+  const [accessField, setAccessField] = useState(false);
 
   const inputHandler = (
     e:
@@ -20,16 +21,22 @@ export const DropdownField = (): JSX.Element => {
     } else if (name === "dropdown") {
       setDropdown(value);
     }
+  };
 
+  const handleAddField = () => {
+    setAccessField(!accessField);
     addNewDataField({
       id: Date.now(),
-      label: name === "label" ? value : label,
-      value: name === "dropdown" ? value : dropdown,
+      label: label,
+      value: dropdown,
       type: "dropdown",
     });
   };
   return (
     <div className='dropdown-field'>
+      <button disabled={accessField} onClick={handleAddField}>
+        Подвердить отправку поля
+      </button>
       <input
         name='label'
         type='text'

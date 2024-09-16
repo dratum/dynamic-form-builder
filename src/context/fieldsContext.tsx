@@ -8,16 +8,8 @@ const FieldsDataContext = createContext<FieldsDataContextType | undefined>(
 function FieldsContextProvider({ children }: { children: ReactNode }) {
   const [fieldData, setFieldData] = useState<fieldDataState[]>([]);
 
-  const addNewDataField = ({ type, label, value, id }: fieldDataState) => {
-    setFieldData((prev) => [
-      ...prev,
-      {
-        id,
-        type,
-        label,
-        value,
-      },
-    ]);
+  const addNewDataField = (newField: fieldDataState) => {
+    setFieldData((prev) => [...prev, newField]);
   };
 
   const submitHandler = (e: React.FormEvent) => {

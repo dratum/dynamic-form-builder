@@ -7,6 +7,7 @@ export const CheckboxField = (): JSX.Element => {
   const [inputText, setInputText] = useState("");
   const [inputCheckbox, setInputCheckbox] = useState(false);
   const [inputType, setInputType] = useState("");
+  const [accessField, setAccessField] = useState(false);
 
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { type, value, checked, name } = e.target;
@@ -17,17 +18,23 @@ export const CheckboxField = (): JSX.Element => {
     } else if (type === "checkbox") {
       setInputCheckbox(checked);
     }
+  };
+
+  const handleAddField = () => {
+    setAccessField(!accessField);
 
     addNewDataField({
       id: Date.now(),
-      label: type === "text" ? value : inputText,
+      label: inputText,
       type: inputType,
-      value: type === "checkbox" ? checked : inputCheckbox,
+      value: inputCheckbox,
     });
   };
-
   return (
     <div className='checkbox-field'>
+      <button disabled={accessField} onClick={handleAddField}>
+        Подвердить отправку поля
+      </button>
       <input
         required
         name='checkbox'
