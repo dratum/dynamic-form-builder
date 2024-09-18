@@ -24,7 +24,7 @@ export const CheckboxField = () => {
     setAccessField(!accessField);
 
     addNewDataField({
-      id: Date.now(),
+      id: Date.now().toString(),
       label: inputText,
       type: inputType,
       value: inputCheckbox,

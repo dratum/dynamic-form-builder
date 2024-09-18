@@ -22,7 +22,7 @@ export const TextField = () => {
     setAccessField(!accessField);
 
     addNewDataField({
-      id: Date.now(),
+      id: Date.now().toString(),
       label: label,
       value: text,
       type: "text",

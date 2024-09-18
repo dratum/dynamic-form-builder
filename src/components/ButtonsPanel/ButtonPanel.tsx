@@ -1,9 +1,8 @@
 import { useFieldsDataContext } from "../../context/fieldsContext";
 import { FieldsDataContextType } from "../../context/types/types";
 import { AddFieldButton } from "../button/addField";
-import { CheckboxField } from "../fields/CheckboxField";
-import { DropdownField } from "../fields/DropdownField";
-import { TextField } from "../fields/TextField";
+import { FormField } from "../fields/FormField";
+import { v4 as uuidv4 } from "uuid";
 
 export const ButtonPanel = () => {
   const { addField } = useFieldsDataContext() as FieldsDataContextType;
@@ -11,15 +10,19 @@ export const ButtonPanel = () => {
   return (
     <div>
       <AddFieldButton
-        onAddField={() => addField(<TextField />)}
+        onAddField={() => addField(<FormField key={uuidv4()} type='text' />)}
         label='Добавить текстовое поле'
       />
       <AddFieldButton
-        onAddField={() => addField(<CheckboxField />)}
+        onAddField={() =>
+          addField(<FormField key={uuidv4()} type='checkbox' />)
+        }
         label='Добавить checkbox'
       />
       <AddFieldButton
-        onAddField={() => addField(<DropdownField />)}
+        onAddField={() =>
+          addField(<FormField key={uuidv4()} type='dropdown' />)
+        }
         label='Добавить dropdown'
       />
     </div>

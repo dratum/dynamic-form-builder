@@ -1,5 +1,5 @@
 export interface fieldDataState {
-  id: number;
+  id: string;
   type: string;
   label: string;
   value: boolean | string;
