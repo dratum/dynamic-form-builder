@@ -2,11 +2,11 @@ import { useState } from "react";
 import { FieldsDataContextType } from "../../context/types/types";
 import { useFieldsDataContext } from "../../context/fieldsContext";
 
-export const DropdownField = (): JSX.Element => {
+export const DropdownField = () => {
   const { addNewDataField } = useFieldsDataContext() as FieldsDataContextType;
 
   const [label, setLabel] = useState("");
-  const [dropdown, setDropdown] = useState("");
+  const [dropdown, setDropdown] = useState("default");
   const [accessField, setAccessField] = useState(false);
 
   const inputHandler = (
@@ -35,7 +35,7 @@ export const DropdownField = (): JSX.Element => {
   return (
     <div className='dropdown-field'>
       <button disabled={accessField} onClick={handleAddField}>
-        Подвердить отправку поля
+        {accessField ? "ok" : "Подвердить отправку поля"}
       </button>
       <input
         name='label'
@@ -45,9 +45,9 @@ export const DropdownField = (): JSX.Element => {
         onChange={inputHandler}
       />
       <select name='dropdown' onChange={inputHandler} value={dropdown}>
-        <option selected>выбрать</option>
-        <option>option-1</option>
-        <option>option-2</option>
+        <option value='default'>выбрать</option>
+        <option value='option-1'>option-1</option>
+        <option value='option-2'>option-2</option>
       </select>
       <button>Удалить</button>
     </div>

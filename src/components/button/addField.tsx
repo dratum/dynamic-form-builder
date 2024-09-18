@@ -1,9 +1,11 @@
+import { FC } from "react";
+
 interface AddFieldButtonProps {
   onAddField: () => void;
   label: string;
 }
 
-export const AddFieldButton: React.FC<AddFieldButtonProps> = ({
+export const AddFieldButton: FC<AddFieldButtonProps> = ({
   onAddField,
   label,
 }) => {

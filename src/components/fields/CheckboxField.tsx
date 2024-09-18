@@ -2,11 +2,11 @@ import { useState } from "react";
 import { useFieldsDataContext } from "../../context/fieldsContext";
 import { FieldsDataContextType } from "../../context/types/types";
 
-export const CheckboxField = (): JSX.Element => {
+export const CheckboxField = () => {
   const { addNewDataField } = useFieldsDataContext() as FieldsDataContextType;
   const [inputText, setInputText] = useState("");
   const [inputCheckbox, setInputCheckbox] = useState(false);
-  const [inputType, setInputType] = useState("");
+  const [inputType, setInputType] = useState("checkbox");
   const [accessField, setAccessField] = useState(false);
 
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,7 +33,7 @@ export const CheckboxField = (): JSX.Element => {
   return (
     <div className='checkbox-field'>
       <button disabled={accessField} onClick={handleAddField}>
-        Подвердить отправку поля
+        {accessField ? "ok" : "Подвердить отправку поля"}
       </button>
       <input
         required

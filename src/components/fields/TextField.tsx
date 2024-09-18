@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useFieldsDataContext } from "../../context/fieldsContext";
 import { FieldsDataContextType } from "../../context/types/types";
 
-export const TextField = (): JSX.Element => {
+export const TextField = () => {
   const { addNewDataField } = useFieldsDataContext() as FieldsDataContextType;
   const [label, setLabel] = useState("");
   const [text, setText] = useState("");
@@ -32,7 +32,7 @@ export const TextField = (): JSX.Element => {
   return (
     <div className='text-field'>
       <button disabled={accessField} onClick={handleAddField}>
-        Подвердить отправку поля
+        {accessField ? "ok" : "Подвердить отправку поля"}
       </button>
       <input
         required

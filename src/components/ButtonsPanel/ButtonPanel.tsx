@@ -1,13 +1,13 @@
+import { useFieldsDataContext } from "../../context/fieldsContext";
+import { FieldsDataContextType } from "../../context/types/types";
 import { AddFieldButton } from "../button/addField";
 import { CheckboxField } from "../fields/CheckboxField";
 import { DropdownField } from "../fields/DropdownField";
 import { TextField } from "../fields/TextField";
 
-export const ButtonPanel = ({
-  addField,
-}: {
-  addField: (element: JSX.Element) => void;
-}) => {
+export const ButtonPanel = () => {
+  const { addField } = useFieldsDataContext() as FieldsDataContextType;
+
   return (
     <div>
       <AddFieldButton
