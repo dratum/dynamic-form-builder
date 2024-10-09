@@ -11,6 +11,7 @@ export const FormField: React.FC<FormFieldProps> = ({ type }) => {
   const [label, setLabel] = useState("");
   const [value, setValue] = useState("");
   const [accessField, setAccessField] = useState(false);
+  const [remove, setRemove] = useState(false);
 
   const inputHandler = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -63,7 +64,9 @@ export const FormField: React.FC<FormFieldProps> = ({ type }) => {
         );
     }
   };
-
+  if (remove) {
+    return null;
+  }
   return (
     <div className={`${type}-field`}>
       <button disabled={accessField} onClick={handleAddField}>
@@ -77,7 +80,9 @@ export const FormField: React.FC<FormFieldProps> = ({ type }) => {
         onChange={inputHandler}
       />
       {renderFieldInput()}
-      <button>Удалить</button>
+      <button type='button' onClick={() => setRemove(true)}>
+        Удалить
+      </button>
     </div>
   );
 };
